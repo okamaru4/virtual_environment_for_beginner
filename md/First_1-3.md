@@ -18,7 +18,7 @@ sudo yum -y groupinstall "導入する名称"
       - こちらは、オプションと呼びinstallを行っている際に yes/noなどと聞かれるのを全てyesとするためのものです
       - 特に大量にパッケージをinstallする際は、つけたほうがinstallが最後まで手を動かすことなく可能となります
       - また今回は、vagrantの入門になるので全てに*-y*をいれていいと思います
-  - groupeinstall
+  - groupinstall
     - 通常のinstallと異なり、パッケージをまとめて導入することが可能です
     - 今回この後実行する最初のコマンドで登場しますがそれ以外にも種類があるのでぜひ検索してみてください
     
@@ -45,7 +45,7 @@ sudo yum -y groupinstall "導入する名称"
   ```shell
   sudo yum -y install epel-release
   # yumがパッケージを取得しにいく場所の更新を行います
-  sudo rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+  sudo wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
   sudo rpm -Uvh remi-release-7.rpm
   sudo yum -y install --enablerepo=remi-php71 php php-pdo php-mysqlnd php-mbstring php-xml php-fpm php-common php-devel
   php -v
@@ -59,7 +59,7 @@ sudo yum -y groupinstall "導入する名称"
   php composer-setup.php
   php -r "unlink('composer-setup.php');"
   # グローバルにコマンドを使用するためにfileの移動を行います
-  mv composer.phar /usr/local/bin/composer
+  sudo mv composer.phar /usr/local/bin/composer
   composer -v
   ```
   - composer のversionが確認できたら完了です
@@ -95,8 +95,8 @@ sudo yum -y groupinstall "導入する名称"
         Require all granted
     </Directory>
     ↓  以下に変更
-    <Directory "/vagrant/laravel_test/public">
-        AllowOverride All
+    <Directory "/vagrant/laravel_test/public"> # ここを変更
+        AllowOverride All  # ここを変更
         Require all granted
     </Directory>
     ```

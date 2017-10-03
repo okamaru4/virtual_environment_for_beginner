@@ -122,7 +122,7 @@ sudo yum -y groupinstall "導入する名称"
     - その有効にした箇所でconfig.vm.network "forwarded_port", guest: 80, host: 8080の記述がありました。この80というのは、httpという通信を行うためのポートと呼ばれる窓口です
     - なのでファイヤーウォールに対してこのポートを経由したhttp通信によるアクセスを許可するためのコマンドを実行します
   ```shell
-  sudo firewall-cmd --add-service=http --zone=public --permanet
+  sudo firewall-cmd --add-service=http --zone=public --permanent
   # 新たに追加を行ったのでそれをファイヤーウォールに反映させるコマンドも合わせて実行します
   sudo firewall-cmd --reload
   ```

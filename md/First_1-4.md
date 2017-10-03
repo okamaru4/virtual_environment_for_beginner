@@ -15,7 +15,7 @@
 - NginxのInstall
   - できるかぎり最新をInstallしたいと思います
   ```shell
-  sudo vi /etc/yum.repo.d/nginx.repo
+  sudo vi /etc/yum.repos.d/nginx.repo
   ```
   - 上記コマンドを作成したら自動で*vi*というエディタが立ち上がりますので下記内容を書きましょう
   ```

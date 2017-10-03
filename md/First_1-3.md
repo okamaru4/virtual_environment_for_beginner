@@ -80,12 +80,13 @@ sudo yum -y groupinstall "導入する名称"
   - 編集には、普段使うエディタを使用せず元々CentOSに存在する*vi*を使用し行います。
   ```shell
   # 必ずsudoを使用しなければvagrant userでは編集できません
-  sudo vi /etc/httpd/conf/http.conf
+  sudo vi /etc/httpd/conf/httpd.conf
   ```
   - 編集箇所は、大きく分けて3箇所あります
     - DocumentRoot
     ```
-    DocumentRoot "/var/www/html" # ここを修正
+    DocumentRoot "/var/www/html"
+    ↓ 以下に変更
     DocumentRoot "/vagrant/laravel_test/public"
     ```
     - Directory
@@ -127,4 +128,10 @@ sudo yum -y groupinstall "導入する名称"
   sudo firewall-cmd --reload
   ```
   - では、一旦この状態で画面を確認しましょう
+ 
+  - もし表示されなかったのならば一度以下のコマンドを実行しましょう
+  ```shell
+  sudo systemctl restart httpd
+  ```
   
+  - 問題なく*Laravel*のwelcome画面が表示されましたでしょうか？

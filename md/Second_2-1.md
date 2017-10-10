@@ -81,5 +81,3 @@ docker-compose build workspace mysql apache2 nginx
 
 ## 早速Apacheで起動しブラウザから確認できるか確認しましょう
 
-
-

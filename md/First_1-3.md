@@ -89,14 +89,18 @@ apacheの設定fileは、*/etc/httpd/conf/httpd.conf* にありますのでこ�
   # 必ずsudoを使用しなければvagrant userでは編集できません
   sudo vi /etc/httpd/conf/httpd.conf
   ```
-### 編集箇所は、大きく分けて3箇所あります
+### 編集箇所は、大きく分けて3箇所あります。(同一file内にてです)
+
     - DocumentRoot
+    
     ```
     DocumentRoot "/var/www/html"
     ↓ 以下に変更
     DocumentRoot "/vagrant/laravel_test/public"
     ```
+    
     - Directory
+    
     ```
     <Directory "/var/www/">
         AllowOverride None
@@ -108,7 +112,9 @@ apacheの設定fileは、*/etc/httpd/conf/httpd.conf* にありますのでこ�
         Require all granted
     </Directory>
     ```
+    
     - User, Group
+    
     ```
     User apache
     Group apache
@@ -116,6 +122,7 @@ apacheの設定fileは、*/etc/httpd/conf/httpd.conf* にありますのでこ�
     User vagrant
     Group vagrant
     ```
+
 ### 編集が終わったら一度apacheを起動しましょう！
 
   ```shell

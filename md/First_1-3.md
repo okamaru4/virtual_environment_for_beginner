@@ -91,17 +91,17 @@ apacheの設定fileは、*/etc/httpd/conf/httpd.conf* にありますのでこ�
   ```
 ### 編集箇所は、大きく分けて3箇所あります。(同一file内にてです)
 
-    - DocumentRoot
+DocumentRoot
     
-    ```
+    ```apache
     DocumentRoot "/var/www/html"
     ↓ 以下に変更
     DocumentRoot "/vagrant/laravel_test/public"
     ```
     
-    - Directory
+Directory
     
-    ```
+    ```apache
     <Directory "/var/www/">
         AllowOverride None
         Require all granted
@@ -113,9 +113,9 @@ apacheの設定fileは、*/etc/httpd/conf/httpd.conf* にありますのでこ�
     </Directory>
     ```
     
-    - User, Group
+User, Group
     
-    ```
+    ```apache
     User apache
     Group apache
     ↓  以下に変更

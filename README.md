@@ -22,19 +22,20 @@
       brew cask install docker
       ```
 
-### 目次
+# 目次
 ---
 
-- 第1章 ~ Vagrant ~
-  - 1−1 [概要説明と頻出コマンド一覧](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-1.md)
-  - 1-2 [Boxの作成と仮想環境へのアクセス](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-2.md)
-  - 1-3 [Apache編 〜 各ライブラリなどを導入 〜](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-3.md)
-  - 1-4 [Nginx編](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-4.md)
-- 第2章 ~ Docker ~
-  - 2 概要説明と頻出コマンド一覧
-  - 2-1 Mac編
-    - 2-1-1 環境構築の下準備
-    - 2-1-2 Laradockを使用してのLaravelの開発環境の構築
-  - 2-2  Windows編
-    - 2-2-1 環境構築の下準備
-    - 2-2-2 
+## 第1章 ~ Vagrant ~
+- 1−1 [概要説明と頻出コマンド一覧](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-1.md)
+- 1-2 [Boxの作成と仮想環境へのアクセス](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-2.md)
+- 1-3 [Apache編 〜 各ライブラリなどを導入 〜](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-3.md)
+- 1-4 [Nginx編](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-4.md)
+
+## 第2章 ~ Docker ~
+2 概要説明と頻出コマンド一覧
+- 2-1 Mac編
+  - 環境構築の下準備
+  - Laradockを使用してのLaravelの開発環境の構築
+- 2-2 Windows編
+  - 環境構築の下準備
+  - Laradockの導入

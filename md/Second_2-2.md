@@ -35,7 +35,6 @@ https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 ```
-と同じです。
 
 次に公式の手順に沿うと何やら有効化など出て来ますが一旦ここでは飛ばします。
 
@@ -67,10 +66,11 @@ docker-compose version 1.16.1, build 1719ceb
 ```
 と最終的に表示されたら問題ありません。
 
-次に一度ssh接続をやめ再度sshログインします。
+次に一度ssh接続をやめ再度ssh接続します。
 ※shellの再読み込みでも実行が確認できなかったため手間ですが再度接続し直します。
 
 再接続を行ったら以下コマンドを実行しましょう。
+
 ```shell
 docker-compose build workspace nginx apache2 mysql php-fpm
 ```
@@ -80,12 +80,12 @@ docker-compose build workspace nginx apache2 mysql php-fpm
 そうすることによって仮想環境構築を行うことが可能になります。
 
 ※docker のimageをpullしそれを元に仮想環境を構築します。それらの定義書がDockerfileとなります。
-※Vagrantのboxを作成しそれを元に仮想環境を構築します。それらの定義書がVagrantfileとなります。 >> これに非常に似ているます。
+※Vagrantのboxを作成しそれを元に仮想環境を構築します。それらの定義書がVagrantfileとなります。 >> これに非常に似ています。
 
 ```shell
 docker-compose up -d apache2 workspace
 ```
-とコマンド打ったあとにvagrant で設定したipをブラウザに入力してください(ホスト側)。
+とコマンドを打ったあとにvagrant で設定したipをブラウザに入力してください(ホスト側)。
 そうしますと`Index of /`という文言が表示されましたでしょうか？
 
 apacheの起動がこれで確認できました。
@@ -94,13 +94,13 @@ apacheの起動がこれで確認できました。
 ## DocumentRootなどの設定を行い、Laravelのwelcome pageの表示を行う
 
 まず最初にapacheを使用して表示を行いたいと思います。
-編集を行う対象fileは、laradock/apache2/sites/default.apache.confとなります。
+編集を行う対象fileは、*laradock/apache2/sites/default.apache.conf* となります。
 
 ```apache
 <VirtualHost *:80>
   ServerName laravel.dev
   # ↓ 以下に編集
-  ServerName 192.168.88.10 # → 自身のvagrant で設定したipを記載してください
+  ServerName 192.168.33.10 # → 自身のvagrant で設定したipを記載してください
   DocumentRoot /var/www/
   # ↓ 以下に編集
   DocumentRoot /var/www/project_name/public # vagrantの流れで行っているなら project_name はlaravel_testになると思います
@@ -136,7 +136,7 @@ docker-compose up -d apache2
 ## Nginxを使用しての表示を行う
 
 nginxもapache同様にrootの編集を行います。
-編集するfileは、 laradock/nginx/sites/default.confです。
+編集するfileは、 *laradock/nginx/sites/default.conf* です。
 
 ```nginx
 server {

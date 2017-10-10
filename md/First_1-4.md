@@ -1,24 +1,26 @@
 # 次にNginxを利用しての画面の表示を行います
 
-## 前回作成した*Laravel*を使用します
+前回作成した*Laravel*を使用します
 
 ## 目的としてapacheの次にシェアを拡大している*Nginx*を使用しての*Laravel*のwelcome画面の表示です
-  まず起動状態であるapacheを一度停止しましょう
+  
+まず起動状態であるapacheを一度停止しましょう
   ```shell
   sudo systemctl stop httpd
   ```
-  これで停止出来たかなと思います
-  nginxを使用する上で必要となるものが*php-fpm*です。こちら先ほどのphpの導入の段階でInstallを済ませてます
+これで停止出来たかなと思います。
+nginxを使用する上で必要となるものが*php-fpm*です。こちら先ほどのphpの導入の段階でInstallを済ませてます。
 
 
 ## NginxのInstall
-  できるかぎり最新をInstallしたいと思います
+
+できるかぎり最新をInstallしたいと思います。
   
   ```shell
   sudo vi /etc/yum.repos.d/nginx.repo
   ```
   
-  上記コマンドを作成したら自動で*vi*というエディタが立ち上がりますので下記内容を書きましょう
+上記コマンドを作成したら自動で*vi*というエディタが立ち上がりますので下記内容を書きましょう。
   
   ```
   [nginx]
@@ -42,20 +44,21 @@ nginxのversionが確認できたでしょうか？
   ```shell
   sudo systemctl start nginx
   ```
-  - 次にブラウザにて *192.168.33.10* と入力しwelcomeページが表示されましたでしょうか？
-    - 表示されたら問題なく動いていることが確認できます
+
+次にブラウザにて *192.168.33.10* と入力しwelcomeページが表示されましたでしょうか？
+表示されたら問題なく動いていることが確認できます。
     
 
 ## Nginxを使用して*Laravel*の画面を表示
-  - apacheでLaravelを表示した際と同様に設定fileがnginxにも存在しているので編集を行います
-  - それに伴いapacehと異なりnginxに関しては、*php-fpm*という物を使用すると話をしました
-    - このライブラリにも設定fileが存在しているのでこちらも編集を行います
+apacheでLaravelを表示した際と同様に設定fileがnginxにも存在しているので編集を行います。
+それに伴いapacheと異なりnginxに関しては、*php-fpm*という物を使用すると話をしました。
+このライブラリにも設定fileが存在しているのでこちらも編集を行います。
   
-  - では、早速nginxの設定fileを編集していきます
+では、早速nginxの設定fileを編集していきます
   ```shell
   sudo vi /etc/nginx/conf.d/default.conf
   ```
-  - 編集範囲が広いですが頑張りましょう。
+編集範囲が広いですが頑張りましょう。
   
   ```nginx
   server {

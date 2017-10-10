@@ -1,23 +1,25 @@
-### 次にNginxを利用しての画面の表示を行います
+## 次にNginxを利用しての画面の表示を行います
 
-- 前回作成した*Laravel*を使用します
+### 前回作成した*Laravel*を使用します
 
-- 目的としてapacheの次にシェアを拡大している*Nginx*を使用しての*Laravel*のwelcome画面の表示です
-  - まず起動状態であるapacheを一度停止しましょう
+### 目的としてapacheの次にシェアを拡大している*Nginx*を使用しての*Laravel*のwelcome画面の表示です
+  まず起動状態であるapacheを一度停止しましょう
   ```shell
   sudo systemctl stop httpd
   ```
-  - これで停止出来たかなと思います
-  - nginxを使用する上で必要となるものが*php-fpm*です
-    - こちら先ほどのphpの導入の段階でInstallを済ませてます
+  これで停止出来たかなと思います
+  nginxを使用する上で必要となるものが*php-fpm*です。こちら先ほどのphpの導入の段階でInstallを済ませてます
 
 
-- NginxのInstall
-  - できるかぎり最新をInstallしたいと思います
+### NginxのInstall
+  できるかぎり最新をInstallしたいと思います
+  
   ```shell
   sudo vi /etc/yum.repos.d/nginx.repo
   ```
-  - 上記コマンドを作成したら自動で*vi*というエディタが立ち上がりますので下記内容を書きましょう
+  
+  上記コマンドを作成したら自動で*vi*というエディタが立ち上がりますので下記内容を書きましょう
+  
   ```
   [nginx]
   name=nginx repo
@@ -25,9 +27,10 @@
   gpgcheck=0
   enabled=1
   ```
-  - 書き終わったら*esc + :wq*を実行しましょう
-    - viというエディタの操作方法は、検索するとすぐ出てきますがこちらの方でも最後の方で基礎的なものはまとめたいと思います
-  - fileの保存が出来ましたら以下のコマンドを実行しNginxのInstallを行います
+  
+  書き終わったら*esc + :wq*を実行しましょう
+  viというエディタの操作方法は、検索するとすぐ出てきますがこちらの方でも最後の方で基礎的なものはまとめたいと思います
+  fileの保存が出来ましたら以下のコマンドを実行しNginxのInstallを行います
   ```shell
   sudo yum install -y nginx
   nginx -v

@@ -69,15 +69,20 @@ docker-compose version 1.16.1, build 1719ceb
 次に一度ssh接続をやめ再度ssh接続します。
 ※shellの再読み込みでも実行が確認できなかったため手間ですが再度接続し直します。
 
-再接続を行ったら以下コマンドを実行しましょう。
+## Laradockを導入する
 
+再度SSH接続を行いLaradockの導入を行います。
+
+作業ディレクトリは、 `/vagrant/` です。
 ```shell
+# Laradock本体をCloneしてきます。
+git clone https://github.com/laradock/laradock.git
+cd laradock
+cp env.example .env  # 設定fileを複製しそれを元にコンテナの作成を行います。
 docker-compose build workspace nginx apache2 mysql php-fpm
 ```
 
-必要なパッケージを指定しBuildを行ってあげます。
-
-そうすることによって仮想環境構築を行うことが可能になります。
+必要なパッケージを指定しBuildを行います。仮想環境構築を行うことが可能になります。
 
 ※docker のimageをpullしそれを元に仮想環境を構築します。それらの定義書がDockerfileとなります。
 ※Vagrantのboxを作成しそれを元に仮想環境を構築します。それらの定義書がVagrantfileとなります。 >> これに非常に似ています。

@@ -37,7 +37,7 @@ brew cask install docker
 ```shell
 docker --version
 ```
-でversionの確認を行ってください。
+versionの確認を行ってください。
 問題なくversionが確認できたら完了です。
 
 
@@ -60,6 +60,7 @@ Cloneするために任意のディレクトリを作成します。今回は、
 cd docker_test
 git clone https://github.com/laradock/laradock.git
 cd laradock
+cp env-example .env
 ```
 完了したらディレクトリを上記のように移動しましょう。
 
@@ -71,13 +72,58 @@ cd laradock
   - mysql
   - apache
   - nginx
+  - php-fpm
 
 ```shell
-docker-compose build workspace mysql apache2 nginx
+docker-compose build workspace mysql apache2 nginx php-fpm
 ```
 
 コマンドを実行したら、時間がかかりますで休憩でもしましょう。
 
+buildし終わったら次にfileの編集を行います。このままですと`docker-compose up workspace apache2 mysql` としたところで何もブラウザで確認できません。
+なのでまず最初にapacheの設定fileを編集します。
 
-## 早速Apacheで起動しブラウザから確認できるか確認しましょう
+
+## Apacheのfileを編集
+
+
+編集は、前回学んだ`Vagrant` の`apacheのhttp.conf` の編集に似てます。
+
+対象fileは、`laradock/apache2/sites/default.apache.conf` です。
+```apache
+<VirtualHost *:80>
+  ServerName laradock.dev
+  # ↓ 変更
+  ServerName localhost
+  DocumentRoot /var/www/
+  # ↓ 変更
+  DocumentRoot /var/www/project_name/public/
+  Options Indexes FollowSymLinks
+
+  <Directory "/var/www/">
+  #↓ 以下に変更です
+  <Directory "/var/www/project_name/public">
+    AllowOverride All
+    <IfVersion < 2.4>
+      Allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+      Require all granted
+    </IfVersion>
+  </Directory>
+
+</VirtualHost>
+```
+
+この編集を終えた段階で再度`build` を行います。`build` を行なったら次に`up` を行うのですがこの際できれば起動のLogを吐き出し続けると行ったことをせずにバックグラウンドで起動をし続けてもらいたいので`up -d` とします。コマンドの全文は以下です。
+
+```sql
+docker-compose up -d workspace apache2
+```
+
+これでバックグラウンドでの起動が行えます。
+早速ブラウザにて確認を行いたいと思います。*http://localhost* と入力をしましょう。
+
+
+問題なく画面が表示されたら次に`nginx` を使用しての画面の表示を行います。
 

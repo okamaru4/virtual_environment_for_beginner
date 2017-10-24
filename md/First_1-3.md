@@ -61,7 +61,7 @@ apaceh + php を使用してのLaravelのwelcome pageの表示を行います。
 LaravelのProject作成には、composerが必要になりますのでcomposerのinstallを行います。
 公式のDownload手順を踏襲します。
 
-```shell
+  ```shell
   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
   php composer-setup.php
   php -r "unlink('composer-setup.php');"
@@ -89,7 +89,7 @@ apacheの設定fileは、*/etc/httpd/conf/httpd.conf* にありますのでこ�
   # 必ずsudoを使用しなければvagrant userでは編集できません
   sudo vi /etc/httpd/conf/httpd.conf
   ```
-### 編集箇所は、大きく分けて3箇所あります。(同一file内にてです)
+## 編集箇所は、大きく分けて3箇所あります。(同一file内にてです)
 
 ```apache
 # DocumentRoot
@@ -125,7 +125,7 @@ User vagrant
 Group vagrant
 ```
 
-### 編集が終わったら一度apacheを起動しましょう！
+## 編集が終わったら一度apacheを起動しましょう！
 
   ```shell
   sudo systemctl start httpd

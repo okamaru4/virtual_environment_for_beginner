@@ -78,10 +78,20 @@ docker-compose version 1.16.1, build 1719ceb
 # Laradock本体をCloneしてきます。
 git clone https://github.com/laradock/laradock.git
 cd laradock
-cp env.example .env  # 設定fileを複製しそれを元にコンテナの作成を行います。
-docker-compose build workspace nginx apache2 mysql php-fpm
+cp env-example .env  # 設定fileを複製しそれを元にコンテナの作成を行います。
+sudo systemctl start docker
 ```
 
+Laradockは、データを永続的に保持する設定がされています。ただし、その保存先が確認できている状態で変化がない場合、homeディレクトリ以下にフォルダが作成されるようになってます。なのでそれをbuildする前に変更します。
+
+変更file `.env`
+```
+```
+
+
+```shell
+docker-compose build workspace nginx apache2 mysql php-fpm
+```
 必要なパッケージを指定しBuildを行います。仮想環境構築を行うことが可能になります。
 
 ※docker のimageをpullしそれを元に仮想環境を構築します。それらの定義書がDockerfileとなります。

@@ -53,3 +53,13 @@ mysql > set password = "新たなpassword";
 
 これで導入と設定が完了となります。
 
+## DBの作成
+
+実際に使用するDBの作成を行います。
+```msyql
+mysql > create database db_name;
+```
+DBの名前はお好きなものにしてください。
+Query OKと表示されたら問題なく作成は完了です。
+
+

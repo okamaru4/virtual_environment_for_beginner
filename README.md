@@ -30,6 +30,7 @@
 - 1-2 [Boxの作成と仮想環境へのアクセス](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-2.md)
 - 1-3 [Apache編 〜 各ライブラリなどを導入 〜](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-3.md)
 - 1-4 [Nginx編](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-4.md)
+- 1-5 [DBの設定](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/First_1-5.md)
 
 ## 第2章 ~ Docker ~
 2 [概要説明と頻出コマンド一覧](https://github.com/hironeko/virtual_environment_for_beginner/blob/master/md/Second_2.md)

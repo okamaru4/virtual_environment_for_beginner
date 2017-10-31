@@ -40,6 +40,17 @@ docker --version
 versionの確認を行ってください。
 問題なくversionが確認できたら完了です。
 
+### 次にLaravelのProjectを準備
+
+動作確認をするためのLaravelのProjectを作成しますがその前に後々Laradockを導入する際に使用するディレクトリを用意しそこにLaravelを作成します。
+
+
+
+```shell
+mkdir docker_dir && cd docker_dir
+composer create-project laravel/laravel laravel_docker
+```
+
 
 
 ## 早速起動を行い、必要なものをGithubからCloneして来ます
@@ -55,9 +66,9 @@ open -a "docker"
 次に今回必要とするLaravelの環境構築するにあたり便利な*laradock*というものを使用します。
 [Laradock](https://github.com/laradock/laradock)
 上記リンク先のClone用URLを取得しCloneを行います。
-Cloneするために任意のディレクトリを作成します。今回は、ディレクトリ名に*docker_test*としましょう。
+
 ```shell
-cd docker_test
+# docker_dir
 git clone https://github.com/laradock/laradock.git
 cd laradock
 cp env-example .env
@@ -97,12 +108,12 @@ buildし終わったら次にfileの編集を行います。このままです�
   ServerName localhost
   DocumentRoot /var/www/
   # ↓ 変更
-  DocumentRoot /var/www/project_name/public/
+  DocumentRoot /var/www/laravel_docker/public/
   Options Indexes FollowSymLinks
 
   <Directory "/var/www/">
   #↓ 以下に変更です
-  <Directory "/var/www/project_name/public">
+  <Directory "/var/www/laravel_docker/public">
     AllowOverride All
     <IfVersion < 2.4>
       Allow from all
@@ -127,3 +138,35 @@ docker-compose up -d workspace apache2
 
 問題なく画面が表示されたら次に`nginx` を使用しての画面の表示を行います。
 
+## Nginxのfileを編集
+
+
+まず作業を開始する前にapacheの起動を止めましょう。
+`docker-compose stop apache2`
+
+次に編集を開始しますが編集fileは、`nginx/sites/default.con` になります。
+
+```nginx
+server {
+
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+    
+    # 以下のように編集をしてください
+    server_name localhost;
+    root /var/www/laravel_docker/public;
+    
+ # 以下省略
+ 
+}
+```
+
+これで編集は完了です。
+
+次に起動をして確認をしますがコマンドは以下です。
+
+```shell
+docker-compose up -d --build nginx
+```
+
+これで再度ブラウザにて*http://localhost* で確認してください。
